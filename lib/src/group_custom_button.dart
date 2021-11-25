@@ -101,14 +101,14 @@ class GroupCustomButton extends StatelessWidget {
                                 decoration: BoxDecoration(
 
                                     gradient: LinearGradient(
-                                      colors: [Color(0xFF0BDA51),Color(0xFFFFF14F)],
+                                      colors: [isSelected?Color(0xFF000983):Color(0xFF0BDA51),isSelected?Color(0xFF000983):Color(0xFFFFF14F)],
                                       begin: Alignment.centerLeft,
                                       end: Alignment.centerRight,
                                     ),
 
                                     borderRadius: BorderRadius.circular(10.0)),
                                 child: Card(
-                                  elevation: 5,
+                                  elevation: isSelected?16:5,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0)),
                                   child: Image.network(buttonImage,fit:BoxFit.fill),
