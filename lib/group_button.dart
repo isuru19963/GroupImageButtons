@@ -11,6 +11,7 @@ class GroupButton extends StatelessWidget {
   const GroupButton({
     Key? key,
     required this.buttons,
+    required this.buttonsImages,
     required this.onSelected,
     this.disabledButtons,
     this.selectedButtons,
@@ -38,6 +39,7 @@ class GroupButton extends StatelessWidget {
     this.textPadding = EdgeInsets.zero,
     this.alignment,
     this.elevation,
+
   })  : assert(
           (isRadio && selectedButtons == null) ||
               (!isRadio && selectedButton == null),
@@ -59,6 +61,9 @@ class GroupButton extends StatelessWidget {
 
   /// [String] list that will be displayed on buttons in the [GroupButton]
   final List<String> buttons;
+
+  /// [String] list that will be displayed on buttons in the [GroupButton]
+  final List<String> buttonsImages;
 
   /// [int] button ids that are disabled.
   final List<int>? disabledButtons;
@@ -138,10 +143,13 @@ class GroupButton extends StatelessWidget {
   /// The field is responsible for how the buttons will be grouped
   final GroupingType groupingType;
 
+
+
   @override
   Widget build(BuildContext context) {
     return GroupButtonBody(
       buttons: buttons,
+      buttonsImages: buttonsImages,
       disabledButtons: disabledButtons,
       selectedButtons: selectedButtons,
       selectedButton: selectedButton,

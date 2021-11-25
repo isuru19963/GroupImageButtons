@@ -5,6 +5,7 @@ class GroupCustomButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    required this.buttonImage,
     required this.isSelected,
     this.selectedBorderColor,
     this.unselectedBorderColor,
@@ -21,9 +22,12 @@ class GroupCustomButton extends StatelessWidget {
     required this.textPadding,
     this.alignment,
     this.elevation,
+
+
   }) : super(key: key);
 
   final String text;
+  final String buttonImage;
   final void Function()? onPressed;
   final bool isSelected;
   final TextStyle? selectedTextStyle;
@@ -65,6 +69,7 @@ class GroupCustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Container(
       height: height,
       width: width,
@@ -72,24 +77,93 @@ class GroupCustomButton extends StatelessWidget {
         borderRadius: borderRadius ?? BorderRadius.circular(30),
         boxShadow: _boxShadow,
       ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          elevation: elevation ?? 0.0,
-          primary: _getBackGroundColor(theme),
-          shape: _buildShape(),
-          padding: (width != null || height != null) ? EdgeInsets.zero : null,
-          alignment: (width != null || height != null) ? alignment : null,
-        ),
-        child: Padding(
-          padding: textPadding,
-          child: Text(
-            text,
-            textAlign: textAlign,
-            style: _textStyle,
-          ),
-        ),
+      child:
+      Padding(
+          padding: const EdgeInsets.only(
+              top: 1, bottom: 1, left: 10,right: 10),
+          child:Column(
+            children: [
+              SizedBox(
+                width: 78,
+
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          // const SizedBox(
+                          //   width: 8,
+                          // ),
+                          Expanded(
+                            child: new GestureDetector(
+                              onTap: onPressed,
+                              child: Container(
+                                decoration: BoxDecoration(
+
+                                    gradient: LinearGradient(
+                                      colors: [Color(0xFF0BDA51),Color(0xFFFFF14F)],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ),
+
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                child: Card(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0)),
+                                  child: Image.network(buttonImage,fit:BoxFit.fill),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 93, bottom: 1,),
+                        child: Row(
+                          children: <Widget>[
+                            Text(text,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Poppins',
+                                fontSize: 12,
+
+                                letterSpacing: 0.10,
+                                // color: DesignCourseAppTheme.darkerText,
+                              )
+                              ,textAlign: TextAlign.center,)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
       ),
+
+      // ElevatedButton(
+      //   onPressed: onPressed,
+      //   style: ElevatedButton.styleFrom(
+      //     elevation: elevation ?? 0.0,
+      //     primary: _getBackGroundColor(theme),
+      //     shape: _buildShape(),
+      //     padding: (width != null || height != null) ? EdgeInsets.zero : null,
+      //     alignment: (width != null || height != null) ? alignment : null,
+      //   ),
+      //   child: Padding(
+      //     padding: textPadding,
+      //     child: Text(
+      //       text,
+      //       textAlign: textAlign,
+      //       style: _textStyle,
+      //     ),
+      //   ),
+      // ),
     );
   }
 

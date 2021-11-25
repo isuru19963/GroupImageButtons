@@ -7,6 +7,7 @@ class GroupButtonBody extends StatefulWidget {
   const GroupButtonBody({
     Key? key,
     required this.buttons,
+    required this.buttonsImages,
     required this.onSelected,
     this.selectedBorderColor,
     this.unselectedBorderColor,
@@ -34,9 +35,11 @@ class GroupButtonBody extends StatefulWidget {
     required this.textPadding,
     this.alignment,
     this.elevation,
+
   }) : super(key: key);
 
   final List<String> buttons;
+  final List<String> buttonsImages;
   final List<int>? disabledButtons;
   final List<int>? selectedButtons;
   final int? selectedButton;
@@ -140,6 +143,7 @@ class _GroupButtonBodyState extends State<GroupButtonBody> {
     for (var i = 0; i < buttons.length; i++) {
       Widget rebuidedButton = GroupCustomButton(
         text: buttons[i],
+        buttonImage: widget.buttonsImages[i] ,
         onPressed: (widget.disabledButtons?.contains(i) ?? false)
             ? null
             : () {
