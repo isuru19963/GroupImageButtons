@@ -82,8 +82,8 @@ class GroupCustomButton extends StatelessWidget {
           padding: const EdgeInsets.only(
               top: 1, bottom: 1, left: 10,right: 10),
           child:Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
-            crossAxisAlignment: CrossAxisAlignment.center, 
+            mainAxisAlignment: MainAxisAlignment.center, //Center Column contents vertically,
+            crossAxisAlignment: CrossAxisAlignment.center, //Center Column contents horizontally,
             children: [
               SizedBox(
                 width: 78,
@@ -92,8 +92,8 @@ class GroupCustomButton extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center, 
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
+                        crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                         children: <Widget>[
                           // const SizedBox(
                           //   width: 8,
@@ -126,10 +126,10 @@ class GroupCustomButton extends StatelessWidget {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                          top: 93, bottom: 1,),
+                          top: 70, bottom: 1,),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center, 
-                          crossAxisAlignment: CrossAxisAlignment.center, 
+                          mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
+                          crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                           children: <Widget>[
                             Text(text,
                               style: TextStyle(
